@@ -57,7 +57,7 @@ export const googleAuthController = (dependencies:IDependencies) => {
 
             return res.status(200).json({
                 success:true,
-                data:{},
+                data:exist,
                 message :'User google login'
             })
         }
@@ -90,7 +90,7 @@ export const googleAuthController = (dependencies:IDependencies) => {
 
         return res.status(200).json({
             success:true,
-            data:{},
+            data:result,
             message :'User google login'
         })
             

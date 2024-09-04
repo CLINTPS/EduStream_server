@@ -6,7 +6,11 @@ import { logoutController } from "./logout";
 import { getAllUserController } from "./getAllUser";
 import { blockUnblockUserController } from "./blockUnblockUser";
 import { googleAuthController } from "./googleAuth";
-import { updateRoleController } from "./update-role";
+import { becomeInstructorController } from "./becomeInstructor";
+import { selectedInstructorController } from "./selectedInstructorController";
+import { acceptInstructorController } from "./acceptInstructorController";
+import { rejectInstructorController } from "./rejectInstructorController";
+import { userEditProfileController } from "./userEditProfileController";
 
 export const controllers=(dependencies:IDependencies)=>{
     return{
@@ -17,6 +21,10 @@ export const controllers=(dependencies:IDependencies)=>{
         getAllUserData:getAllUserController(dependencies),
         blockUnblockUser:blockUnblockUserController(dependencies),
         googleAuth:googleAuthController(dependencies),
-        updateRole:updateRoleController(dependencies)
+        selectedInstructor:selectedInstructorController(dependencies),
+        becomeInstructor:becomeInstructorController(dependencies),
+        acceptInstructor:acceptInstructorController(dependencies),
+        rejectInstructor:rejectInstructorController(dependencies),
+        userEditProfile:userEditProfileController(dependencies)
     }
 }

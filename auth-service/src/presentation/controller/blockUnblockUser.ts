@@ -16,6 +16,7 @@ export const blockUnblockUserController = (dependencies:IDependencies) => {
             console.log("Blocking user details...",userData);
             
             if (userData) {
+                
                 userData.isBlocked = !userData.isBlocked;
                 await userData.save();
                 console.log(`User is now ${userData.isBlocked ? 'blocked' : 'unblocked'}`);

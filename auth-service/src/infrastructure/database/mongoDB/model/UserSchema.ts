@@ -1,65 +1,108 @@
-import { Schema,model } from "mongoose";
+import { Schema, model } from "mongoose";
 import { UserEntity } from "../../../../domain/entites";
 
-const UserSchema=new Schema({
-    firstName : {
-        type:String,
-        require:true
+const UserSchema = new Schema<UserEntity>({
+    firstName: {
+        type: String,
+        required: true,
     },
-    lastName : {
-        type:String,
-        require:true
+    lastName: {
+        type: String,
+        required: true,
     },
-    email : {
-        type:String,
-        require:true,
+    email: {
+        type: String,
+        required: true,
         unique: true,
-        index: true
+        index: true,
     },
     password: {
-        type:String,
-        require:true
+        type: String,
+        required: true,
     },
-    role : {
-        type:String,
-        enum: [
-            "student",
-            "instructor",
-            "admin"
-        ],
-        default:"student"
+    role: {
+        type: String,
+        enum: ["student", "instructor", "admin", "pending"],
+        default: "student",
     },
     profile: {
         avatar: {
-            type:String,
+            type: String,
             default: "https://www.pngkey.com/png/detail/72-729716_user-avatar-png-graphic-free-download-icon.png",
         },
-        dob:{
-            type:String
+        dob: {
+            type: Date,
         },
-        gender:{
-            enum:["male","female","other"]
+        gender: {
+            type: String,
+            enum: ["male", "female", "other"],
         },
-        phoneNumber :{
+        qualification: {
             type:String,
         },
-        socialMedia: {
-            instagram: String,
-            linkedIn: String,
-            facebook: String
-        }
+        bio: {
+            type: String,
+        },
+        experience: {
+            type: Number,
+        },
     },
-    isBlocked:{
-        type:Boolean,
-        default:false
+    contact: {
+        phoneNumber: {
+            type: String,
+        },
+        socialMedia: {
+            instagram: { type: String },
+            linkedIn: { type: String },
+            facebook: { type: String },
+        },
+    },
+    address :{
+        houseName :{
+            type:String,
+        },
+        post :{
+            type:String,
+        },
+        street :{
+            type:String,
+        },
+        country :{
+            type:String,
+        },
+        state :{
+            type:String,
+        },
+        district :{
+            type:String,
+        },
+    },
+    instructoreProof :{
+        idProof :{
+            type:String,
+        },
+        certificate :{
+            type:String,
+        },
+    },
+    isBlocked: {
+        type: Boolean,
+        default: false,
+    },
+    isVerified: {
+        type: Boolean,
+        default: false,
     },
     profit: {
         type: Number,
-        default: 0
+        default: 0,
     },
-    otp: {
-        type: String
-    }
-},{ timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } });
+    rejectReson : {
+        type:[String]
+    },
+    profession: {
+        type: String,
+    },
+}, { timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } });
 
-export const User=model<UserEntity>("users",UserSchema)
+export const User = model<UserEntity>("users", UserSchema);

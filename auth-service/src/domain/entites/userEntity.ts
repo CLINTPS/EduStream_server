@@ -3,7 +3,8 @@ import { ObjectId } from "mongoose";
 enum Role {
     student = 'student',
     instracture = 'instracture',
-    admin = 'admin'
+    admin = 'admin',
+    pending = 'pending',
 }
 
 enum Gender {
@@ -15,18 +16,35 @@ enum Gender {
 interface SocialMedia {
     facebook? : string;
     instagram? : string;
-    linkedin? : string;
+    linkedIn? : string;
 }
 
 interface Profile {
     avatar?:string;
     dob?:Date;
     gender?:Gender;
+    bio?:string;
+    qualification?:string;
+    experience?:number;
 }
 
 interface Contact {
-    phone?:number;
-    socialmedia?:SocialMedia;
+    phoneNumber?:number;
+    socialMedia?:SocialMedia;
+}
+
+interface InstructoreProof {
+    idProof?:string;
+    certificate?:string
+}
+
+interface Address {
+    houseName?:string;
+    post?:string;
+    street?:string;
+    country?:string;
+    state?:string;
+    district?:string;
 }
 
 export interface UserEntity {
@@ -38,9 +56,13 @@ export interface UserEntity {
     role?: Role;
     profile?: Profile;
     contact?: Contact;
+    address?:Address;
+    instructoreProof?:InstructoreProof;
     isBlocked?: boolean;
     isVerified?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
+    profit?:number;
     profession?: string;
+    rejectReson?:string;
 }

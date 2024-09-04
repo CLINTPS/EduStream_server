@@ -19,6 +19,9 @@ export const getUserController=(dependencies:IDependencies) => {
             if (!result) {
                 throw new Error("User doesn't exist");
             }
+            if(result.isBlocked){
+                throw new Error("User doesn't exist");
+            }
             console.log('user data in get user data',result);
 
             res.status(200).json({

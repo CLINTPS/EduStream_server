@@ -1,9 +1,16 @@
-import { IUserCreateUseCase } from "../../domain/useCases/IUserCreateUseCase";
-import { IOtpVerifyUseCase } from "../../domain/useCases/IOtpVerifyUseCase";
-import { IFindUserByEmailUseCase } from "../../domain/useCases/IFindUserByEmailUseCase";
-import { ILoginUserUseCase } from "../../domain/useCases/ILoginUserUseCase";
-import { IFindUserByIdUseCase } from "../../domain/useCases";
-import { IblockUnblockUserUseCase } from "../../domain/useCases";
+import { 
+    IAcceptInstructor,
+    IBecomeInstracture, 
+    IblockUnblockUserUseCase, 
+    IFindUserByEmailUseCase, 
+    IFindUserByIdUseCase, 
+    IOtpVerifyUseCase, 
+    IRejectInstructorUseCase, 
+    IUserCreateUseCase, 
+    IUserEditProfileUseCase, 
+    ILoginUserUseCase
+} from "../../domain/useCases";
+
 
 export interface IUseCases {
     userCreateUseCase:(dependencies:any)=>IUserCreateUseCase;
@@ -12,4 +19,8 @@ export interface IUseCases {
     userLoginUseCase:(dependencies:any)=>ILoginUserUseCase;
     userFindByIdUseCase:(dependencies:any)=>IFindUserByIdUseCase;
     userBlockUnblockUserUseCase:(dependencies:any)=>IblockUnblockUserUseCase;
+    instractureRequestUseCase:(dependencies:any)=>IBecomeInstracture;
+    acceptInstructorUseCase:(dependencies:any)=>IAcceptInstructor;
+    rejectInstructorUseCase:(dependencies:any)=>IRejectInstructorUseCase;
+    userEditProfileUseCase:(dependencies:any)=>IUserEditProfileUseCase;
 }
