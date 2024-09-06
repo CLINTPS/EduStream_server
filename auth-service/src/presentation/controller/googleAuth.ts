@@ -3,6 +3,7 @@ import { IDependencies } from "../../application/interfaces/IDependencies"
 import { OAuth2Client } from 'google-auth-library'
 import { jwtAccessToken, jwtRefreshToken } from "../../_lib/jwt";
 import { UserEntity } from "../../domain/entites";
+import { userCreatedProducer } from "../../infrastructure/kafka/producer";
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
 
@@ -72,6 +73,8 @@ export const googleAuthController = (dependencies:IDependencies) => {
         if(!result){
             throw new Error("Google auth User Creation error");
         }
+
+        await userCreatedProducer(result)
 
         const access_token = jwtAccessToken({
             _id: String(result?._id),

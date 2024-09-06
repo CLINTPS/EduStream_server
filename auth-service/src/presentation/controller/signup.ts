@@ -2,9 +2,8 @@ import { Request,Response,NextFunction } from "express"
 import { IDependencies } from "../../application/interfaces/IDependencies"
 import { signupValidation } from "../../_lib/validation"
 import { hashPassword } from "../../_lib/bcrypt"
-import { jwtAccessToken } from "../../_lib/jwt"
-import { ErrorResponse } from "../../_lib/common/error"
 import { userCreatedProducer } from "../../infrastructure/kafka/producer"
+import { ErrorResponse } from "../../_lib/common/error"
 
 
 export const signupController = (dependencies:IDependencies)=>{
@@ -25,7 +24,7 @@ export const signupController = (dependencies:IDependencies)=>{
                 console.log("UserExist",userExist);
 
                 if(userExist){
-                    // ErrorResponse.conflict("This Email is alredy registered, please choose another email")
+                    ErrorResponse.conflict("This Email is alredy registered, please choose another email")
                     console.log("Email is alredy registread");
                     
                 }
@@ -41,7 +40,7 @@ export const signupController = (dependencies:IDependencies)=>{
             try {
                 let email=req.body.email
                 console.log('User otp send to this mail :',email);
-                await userCreatedProducer(email)
+                await userCreatedProducer(email,'notification-service-topic')
                 return res.status(200).json({
                     success:true,
                     message:"Otp send successfully"
@@ -94,19 +93,29 @@ export const signupController = (dependencies:IDependencies)=>{
                 }
                 
                 value.password = await hashPassword(value.password)
-                console.log("User signup hashed data ....>>>>....>>>>",value);
+                // console.log("User signup hashed data ....>>>>....>>>>",value);
                 const UserData = {
                     firstName:value.firstName,
                     lastName: value.lastName,
                     email: value.email,
                     password: value.password,
                 }
-                console.log("UserData ...>>>....>>>>....>>>>",UserData);
+                // console.log("UserData ...>>>....>>>>....>>>>",UserData);
                 const lastUserData = await userCreateUseCase(dependencies).execute(UserData);
-                return res.status(200).json({
-                    success:true,
-                    message:"User-Signup successfully"
-                })
+                
+                if (lastUserData) {
+                    await userCreatedProducer(lastUserData);
+                    return res.status(200).json({
+                        success: true,
+                        message: "User-Signup successfully"
+                    });
+                } else {
+                    console.error('Failed to create user: lastUserData is null');
+                    return res.status(500).json({
+                        success: false,
+                        message: "User creation failed"
+                    });
+                }
                 // console.log("User data saved to database: ", lastUserData);
 
 

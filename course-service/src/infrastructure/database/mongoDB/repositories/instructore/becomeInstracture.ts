@@ -1,7 +1,7 @@
-import { User } from "../model/UserSchema"
-import { InstructorEntity, UserEntity } from "../../../../domain/entites"
+import { InstructorEntity, UserEntity } from "../../../../../domain/entities";
+import { User } from "../../models";
 
-export const becomeInstracture = async (instructorData:InstructorEntity):Promise<UserEntity| null> => {
+export const becomeInstracture = async(instructorData:InstructorEntity):Promise<UserEntity | null>=>{
     try {
         console.log("Become instracture Repo",instructorData);
         
@@ -53,8 +53,7 @@ export const becomeInstracture = async (instructorData:InstructorEntity):Promise
         console.log("updatedInstracture....",updatedUser);
 
         return updatedUser;
-        
     } catch (error:any) {
         throw new Error (error?.message);
     }
-}
+} 

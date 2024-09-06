@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express"
 import { IDependencies } from "../../application/interfaces/IDependencies";
 import { User } from "../../infrastructure/database/mongoDB/model";
+import blockUnblock from "../../infrastructure/kafka/producer/blockUnblock";
 
 
 export const blockUnblockUserController = (dependencies:IDependencies) => {
@@ -15,10 +16,10 @@ export const blockUnblockUserController = (dependencies:IDependencies) => {
             const userData= await User.findById(req.body.userId)
             console.log("Blocking user details...",userData);
             
-            if (userData) {
-                
+            if (userData) {  
                 userData.isBlocked = !userData.isBlocked;
                 await userData.save();
+                await blockUnblock(req.body.userId)
                 console.log(`User is now ${userData.isBlocked ? 'blocked' : 'unblocked'}`);
                 res.status(200).json({ success: true, isBlocked: userData.isBlocked });
             } else {

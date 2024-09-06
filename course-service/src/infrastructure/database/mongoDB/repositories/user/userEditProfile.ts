@@ -1,5 +1,5 @@
-import { userEditProfileEntity, UserEntity } from "../../../../domain/entites";
-import { User } from "../model";
+import { userEditProfileEntity,UserEntity } from "../../../../../domain/entities";
+import { User } from "../../models";
 
 export const userEditProfile = async (
   data: userEditProfileEntity
@@ -29,9 +29,12 @@ export const userEditProfile = async (
           "address.district": data?.district,
         },
       },
-      { new: true }
+      { new: true,upsert: true }
     );
+    console.log("Updated user:", updateUserData);
+
     return updateUserData;
+
   } catch (error: any) {
     throw new Error(error?.message);
   }

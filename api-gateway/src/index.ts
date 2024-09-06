@@ -17,15 +17,16 @@ const corsOptions = {
   origin: String(process.env.CLIENT_URL),
   credentials: true
 };
+
 console.log("Cores Option",corsOptions);
 app.use(cors(corsOptions))
 
 const routes = [
   {path :'/api/auth',serviceUrl:process.env.AUTH_SERVICE},
-  // {path :'/api/user',serviceUrl:process.env.USER_SERVICE},
-  {path :'/api/notification',serviceUrl:process.env.NOTIFICATION_SERVICE}
+  {path :'/api/notification',serviceUrl:process.env.NOTIFICATION_SERVICE},
+  {path :'/api/course',serviceUrl:process.env.COURSE_SERVICE},
 ]
-console.log(routes);
+console.log("Using routes",routes);
 
 routes.forEach(route =>{
   if(route.serviceUrl){
