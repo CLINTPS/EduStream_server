@@ -8,7 +8,7 @@ export default async( data:UserEntity | null)=>{
             {
                 topic:'course-service-topic',
                 messages:[{
-                    key : "acceptInstracture",
+                    key : "rejectInstracture",
                     value:JSON.stringify(data)
                 }]
             }

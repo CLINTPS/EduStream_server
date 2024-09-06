@@ -10,7 +10,6 @@ export const acceptInstructor = async(email:string):Promise<UserEntity | null>=>
             { email:email },
             { 
                 $set: { role: "instructor" }
-                // $unset: { rejectReson: "" }
             },
             { new: true }
         );

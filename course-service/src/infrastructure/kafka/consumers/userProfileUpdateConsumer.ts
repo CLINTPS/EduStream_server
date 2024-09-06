@@ -1,7 +1,7 @@
-import { userEditProfileEntity } from "../../../domain/entities";
+import { UserEntity } from "../../../domain/entities";
 import { userEditProfile } from "../../database/mongoDB/repositories";
 
-export default async (data:userEditProfileEntity)=>{
+export default async (data:UserEntity)=>{
     try {
         await userEditProfile(data)
     } catch (error:any) {

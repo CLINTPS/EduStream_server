@@ -1,8 +1,8 @@
-import { userEditProfileEntity,UserEntity } from "../../../../../domain/entities";
+import { UserEntity } from "../../../../../domain/entities";
 import { User } from "../../models";
 
 export const userEditProfile = async (
-  data: userEditProfileEntity
+  data: UserEntity
 ): Promise<UserEntity | null> => {
   try {
     console.log("User edit profile Repo", data);
@@ -18,15 +18,9 @@ export const userEditProfile = async (
         $set: {
           firstName: data.firstName,
           lastName: data.lastName,
-          "profile.dob": data?.dob,
-          "profile.gender": data?.gender,
-          "profile.avatar": data?.profileImage,
-          "contact.phoneNumber": data?.phoneNumber,
-          "address.houseName": data?.houseName,
-          "address.street": data?.street,
-          "address.country": data?.country,
-          "address.state": data?.state,
-          "address.district": data?.district,
+          profile:data?.profile ,
+          address:data?.address,
+          contact:data?.contact
         },
       },
       { new: true,upsert: true }

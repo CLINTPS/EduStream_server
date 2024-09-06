@@ -1,12 +1,12 @@
-import { InstructorEntity } from "../../../domain/entities";
+import { UserEntity } from "../../../domain/entities";
 import { becomeInstracture } from "../../database/mongoDB/repositories"; 
 
-export default async (instructorData:InstructorEntity)=>{
-    console.log("instructorData...",instructorData);
+export default async (instructorData:UserEntity)=>{
+    console.log("becomeInstracture...",instructorData);
     
     try {
         await becomeInstracture(instructorData)
     } catch (error:any) {
-        console.log("user-created-consumed error: ", error?.message);
+        console.log("becomeInstracture-consumed error: ", error?.message);
     }
 }

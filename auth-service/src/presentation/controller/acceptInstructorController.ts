@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { IDependencies } from "../../application/interfaces/IDependencies";
+import { acceptInstractureProducer } from "../../infrastructure/kafka/producer";
 
 export const acceptInstructorController = (dependencies:IDependencies) => {
     return async (req: Request, res: Response, next: NextFunction)=>{
@@ -11,6 +12,8 @@ export const acceptInstructorController = (dependencies:IDependencies) => {
             const AcceptInstructor = await acceptInstructorUseCase(dependencies).execute(req.body.email);
 
             console.log("??????????????????????????",AcceptInstructor);
+
+            await acceptInstractureProducer(AcceptInstructor)
 
             res.status(200).json({
                 success:true,
