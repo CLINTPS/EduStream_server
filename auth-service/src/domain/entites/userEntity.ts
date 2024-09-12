@@ -2,7 +2,7 @@ import { ObjectId } from "mongoose";
 
 enum Role {
     student = 'student',
-    instracture = 'instracture',
+    instracture = 'instructor',
     admin = 'admin',
     pending = 'pending',
 }

@@ -1,3 +1,2 @@
 export * from './userEntity'
-export * from './userEditProfileEntity'
-export * from './InstructorEntity'
+export * from './courseEntity'

@@ -1,6 +1,6 @@
-import jwt from "jsonwebtoken";
-import { jwtAccessToken } from "../../jwt";
-import { Request,Response,NextFunction } from "express";
+import jwt from "jsonwebtoken"
+import { generateAccessToken } from "../../jwt"
+import { Request,Response,NextFunction } from "express"
 
 interface UserPayload {
     _id:string;
@@ -16,9 +16,9 @@ declare global {
     }
 }
 
-export const jwtMiddleware = async (req:Request,res:Response,next:NextFunction):Promise<any>=>{
+export const jwtMiddleware = async (req:Request,res:Response,next:NextFunction):Promise<any> => {
     try {
-        // console.log("Jwt middle ware req.cookies : ",req.cookies);
+        // console.log("Jwt middle ware reached req.cookies : ",req.cookies);
         const { access_token,refresh_token }=req.cookies;
         if(!access_token && !refresh_token ){
             return next()
@@ -32,7 +32,7 @@ export const jwtMiddleware = async (req:Request,res:Response,next:NextFunction):
         if(!user && refresh_token){
             user=jwt.verify(refresh_token,process.env.REFRESH_TOKEN_SECRET!) as UserPayload
             if(user){
-                const newAccessToken = jwtAccessToken(user);
+                const newAccessToken = generateAccessToken(user);
                 res.cookie("access_token",newAccessToken,{
                     httpOnly:true,
                     secure:true,

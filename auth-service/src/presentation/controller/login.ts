@@ -33,7 +33,7 @@ export const loginController = (dependencies:IDependencies) => {
             const matchPassword = await comparePassword(value.password,result.password!)
             console.log("Login time password is :",matchPassword);
             
-            if(!matchPassword){
+            if(!matchPassword){                
                 return next(ErrorResponse.unauthorized("Incorrect password. Please try again.."))
             }
 
