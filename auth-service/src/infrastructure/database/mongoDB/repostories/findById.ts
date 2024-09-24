@@ -6,7 +6,7 @@ export const findById = async (
 ):Promise<UserEntity | null > => {
     try {
         const existUser = await User.findById(id)
-        console.log("Current user find : ",existUser);
+        // console.log("Current user find : ",existUser);
         
         if(!existUser){
             throw new Error("User does not exist!");

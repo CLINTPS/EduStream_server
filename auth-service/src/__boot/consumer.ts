@@ -16,6 +16,8 @@ export const runConsumer = async () => {
 
             await consumer.run({
                 eachMessage: async ({message})=>{
+                    console.log("Message..",message);
+                    
                     const { key, value } = message;
                     const subscriberMethod = String(key) as keyof IAuthSubscriber;
                     const subscriberData = JSON.parse(String(value))

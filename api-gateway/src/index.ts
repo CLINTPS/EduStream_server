@@ -11,6 +11,7 @@ const PORT:number=Number(process.env.PORT || 4000);
 
 app.use(express.json())
 app.use(cookieParser())
+
 app.use(morgan('tiny'))
 
 const corsOptions = {
@@ -25,6 +26,7 @@ const routes = [
   {path :'/api/auth',serviceUrl:process.env.AUTH_SERVICE},
   {path :'/api/notification',serviceUrl:process.env.NOTIFICATION_SERVICE},
   {path :'/api/course',serviceUrl:process.env.COURSE_SERVICE},
+  {path :'/api/payment',serviceUrl:process.env.PAYMENT_SERVICE},
 ]
 console.log("Using routes",routes);
 

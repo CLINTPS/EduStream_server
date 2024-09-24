@@ -4,14 +4,14 @@ import { IDependencies } from "../../application/interfaces/IDependencies";
 
 
 export const getUserController=(dependencies:IDependencies) => {
-    console.log("Reached getUser controller");
+    // console.log("Reached getUser controller");
     const {
         useCases:{userFindByIdUseCase}
     }=dependencies;
 
     return async (req:Request,res:Response,next:NextFunction)=>{
         try {
-            console.log("Get user controller Data ....",req.user);
+            // console.log("Get user controller Data ....",req.user);
             if (!req.user) {
                 throw new Error("User doesn't exist!");
             }
@@ -22,7 +22,7 @@ export const getUserController=(dependencies:IDependencies) => {
             if(result.isBlocked){
                 throw new Error("User doesn't exist");
             }
-            console.log('user data in get user data',result);
+            // console.log('user data in get user data',result);
 
             res.status(200).json({
                 success:true,

@@ -1,7 +1,7 @@
 import { updateOTPService } from "../../service/updateOtp";
 
 console.log("Send verification mail consumer");
-export default async (
+export const sendVerificationMailConsumer= async (
     
     data:{
         email:string,

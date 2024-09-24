@@ -1,7 +1,7 @@
 import { IDependencies } from "../interfaces/IDependencies";
 
 export const userFindByIdUseCase = (dependencies:IDependencies) => {
-    console.log("userFindIdUseCase.............");
+    // console.log("userFindIdUseCase.............");
     
     const {
         repositories:{findById}

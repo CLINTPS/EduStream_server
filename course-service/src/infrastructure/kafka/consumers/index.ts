@@ -4,6 +4,7 @@ import blockUnblockConsumer from "./blockUnblockConsumer"
 import becomeInstructoreConsumer from "./becomeInstructoreConsumer"
 import acceptInstractureConsumer from "./acceptInstractureConsumer"
 import rejectInstractureConsumer from "./rejectInstractureConsumer"
+import coursePaymentSuccessConsumer from "./coursePaymentSuccessConsumer"
 
 export {
     userCreatedConsumer,
@@ -11,5 +12,6 @@ export {
     blockUnblockConsumer,
     becomeInstructoreConsumer,
     acceptInstractureConsumer,
-    rejectInstractureConsumer
+    rejectInstractureConsumer,
+    coursePaymentSuccessConsumer
 }

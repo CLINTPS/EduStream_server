@@ -9,6 +9,8 @@ import {
     getPendingCourseController,
     instructorCourseController,
     rejectCourseController,
+    getEnrolledCourseController,
+    getEnrolledSingleCourseController
 } from '../../presentation/controllers/course'
 
 export const controllers = (dependencies:IDependencies) => {
@@ -20,6 +22,8 @@ export const controllers = (dependencies:IDependencies) => {
         rejectedCourse:rejectCourseController(dependencies),
         editCourse:editCourseController(dependencies),
         getAllCourses:getAllCoursesController(dependencies),
-        getCourse:getCourseController(dependencies)
+        getCourse:getCourseController(dependencies),
+        getEnrolledCourse:getEnrolledCourseController(dependencies),
+        getEnrolledSingleCourse:getEnrolledSingleCourseController(dependencies)
     }
 }

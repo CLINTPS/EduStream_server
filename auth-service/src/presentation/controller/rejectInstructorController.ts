@@ -18,7 +18,10 @@ export const rejectInstructorController = (dependencies:IDependencies) =>{
         
         console.log(">>>>>>>>>>>>>",rejectedData);
 
-        await rejectInstractureProducer(rejectedData)
+        if(rejectedData){
+            await rejectInstractureProducer(rejectedData)
+        }
+
         
         res.status(200).json({
             success:true,

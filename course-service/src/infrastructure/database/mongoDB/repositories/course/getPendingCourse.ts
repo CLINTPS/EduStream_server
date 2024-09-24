@@ -6,7 +6,7 @@ export const getPendingCourse = async():Promise<any | null>=>{
             isPublished: false,
             isRejected: false
         })
-        console.log("All pendingCourse...",pendingCourse);
+        // console.log("All pendingCourse...",pendingCourse);
         return pendingCourse
     } catch (error:any) {
         throw new Error(error);

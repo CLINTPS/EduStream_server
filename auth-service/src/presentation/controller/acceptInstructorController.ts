@@ -12,8 +12,9 @@ export const acceptInstructorController = (dependencies:IDependencies) => {
             const AcceptInstructor = await acceptInstructorUseCase(dependencies).execute(req.body.email);
 
             console.log("??????????????????????????",AcceptInstructor);
-
-            await acceptInstractureProducer(AcceptInstructor)
+            if(AcceptInstructor){
+                await acceptInstractureProducer(AcceptInstructor)
+            }
 
             res.status(200).json({
                 success:true,

@@ -7,10 +7,10 @@ export const getAllCoursesController =(dependencies:IDependencies)=>{
             useCases :{getAllCourseUseCase}
         }=dependencies;
         try {
-            console.log("Reached getAllCoursesController");
+            // console.log("Reached getAllCoursesController");
             
             const allData = await getAllCourseUseCase(dependencies).execute()
-            console.log("getAllCoursesController...",allData);
+            // console.log("getAllCoursesController...",allData);
 
             res.status(200).json({
                 success:true,

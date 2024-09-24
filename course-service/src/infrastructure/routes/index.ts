@@ -13,7 +13,9 @@ export const routes = (dependencies:IDependencies)=>{
         rejectedCourse,
         editCourse,
         getAllCourses,
-        getCourse
+        getCourse,
+        getEnrolledCourse,
+        getEnrolledSingleCourse
     }=controllers(dependencies);
     const router = Router();
 
@@ -30,6 +32,8 @@ export const routes = (dependencies:IDependencies)=>{
     //Student Routes
     router.route("/getAllCourses").get(jwtMiddleware,getAllCourses)
     router.route("/getCourse/:id").get(jwtMiddleware,getCourse)
+    router.route("/enrollment/:id").get(jwtMiddleware,getEnrolledCourse)
+    router.route("/enrollment/singleView/:id").get(jwtMiddleware,getEnrolledSingleCourse)
 
     return router;
 }
