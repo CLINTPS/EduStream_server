@@ -3,6 +3,7 @@ import { IDependencies } from "../../application/interfaces/IDependencies";
 import Stripe from "stripe";
 import { Payment } from "../../infrastructure/database/models/payment";
 import { coursePaymentSuccessProducer } from "../../infrastructure/kafka/producer";
+import { createChatProducer } from "../../infrastructure/kafka/producer"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET as string, {
   apiVersion: "2024-06-20",
@@ -40,6 +41,7 @@ export const makePaymentWebhookController = (dependencies: IDependencies) => {
       
       switch (event.type) {
         case "checkout.session.completed":
+          try {
           const checkoutSession = event.data.object as Stripe.Checkout.Session;
           console.log("Checkout session completed:", checkoutSession);
 
@@ -57,15 +59,24 @@ export const makePaymentWebhookController = (dependencies: IDependencies) => {
             status,
             amount: amountRupees
           });
-          console.log("Payment saved:", newPayment);
-          
-          const paymetRes=await newPayment.save();
+          console.log("Payment data to be saved:", newPayment);
 
-          console.log("paid response ------------:", paymetRes);
+            let paymetRes;
+            try {
+              paymetRes = await newPayment.save();
+              console.log("Payment saved successfully:", paymetRes);
+              await createChatProducer({
+                type: "individual",
+                participants: [userId,instructorRef]
+              })
+            } catch (error) {
+              console.error("Error saving payment:", error);
+              throw new Error("Payment saving failed!");
+            }
 
-          if(!paymetRes){
-            throw new Error("Payment failed!")
-          }
+            if (!paymetRes) {
+              throw new Error("Payment response is empty, payment might have failed!");
+            }
 
           const produceData = {
             userId: paymetRes.userId.toString(),
@@ -74,9 +85,18 @@ export const makePaymentWebhookController = (dependencies: IDependencies) => {
             amount: paymetRes.amount,
           };
           console.log(produceData,"produce data in the success payment");
-          
-          await coursePaymentSuccessProducer(produceData)
 
+          try {
+            await coursePaymentSuccessProducer(produceData);
+            console.log("Data produced successfully to Kafka.");
+          } catch (error) {
+            console.error("Error producing data to Kafka:", error);
+            throw new Error("Failed to send payment success message to Kafka!");
+          }
+        } catch (error) {
+          console.error("Error handling 'checkout.session.completed' event:", error);
+          throw error;
+        }
           break;
 
         default:

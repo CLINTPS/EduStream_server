@@ -11,6 +11,7 @@ import { selectedInstructorController } from "./selectedInstructorController";
 import { acceptInstructorController } from "./acceptInstructorController";
 import { rejectInstructorController } from "./rejectInstructorController";
 import { userEditProfileController } from "./userEditProfileController";
+import { forgotPasswordController } from "./forgotPasswordController";
 
 export const controllers=(dependencies:IDependencies)=>{
     return{
@@ -25,6 +26,7 @@ export const controllers=(dependencies:IDependencies)=>{
         becomeInstructor:becomeInstructorController(dependencies),
         acceptInstructor:acceptInstructorController(dependencies),
         rejectInstructor:rejectInstructorController(dependencies),
-        userEditProfile:userEditProfileController(dependencies)
+        userEditProfile:userEditProfileController(dependencies),
+        forgotPassword:forgotPasswordController(dependencies)
     }
 }

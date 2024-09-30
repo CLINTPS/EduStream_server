@@ -27,6 +27,7 @@ const routes = [
   {path :'/api/notification',serviceUrl:process.env.NOTIFICATION_SERVICE},
   {path :'/api/course',serviceUrl:process.env.COURSE_SERVICE},
   {path :'/api/payment',serviceUrl:process.env.PAYMENT_SERVICE},
+  {path :'/api/chat',serviceUrl:process.env.CHAT_SERVICE},
 ]
 console.log("Using routes",routes);
 

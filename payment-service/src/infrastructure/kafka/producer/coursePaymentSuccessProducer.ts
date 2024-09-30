@@ -39,6 +39,20 @@ export default async (data: {
             }),
           },
         ],
+      },
+      {
+        topic: "chat-service-topic",
+        messages: [
+          {
+            key: "coursePaymentSuccess",
+            value: JSON.stringify({
+              userId: userId,
+              courseId: courseId,
+              amount: amount,
+              instructorId: instructorRef,
+            }),
+          },
+        ],
       }
     ]
     

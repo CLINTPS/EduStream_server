@@ -16,7 +16,8 @@ export const routes = (dependencies : IDependencies)=>{
         selectedInstructor,
         acceptInstructor,
         rejectInstructor,
-        userEditProfile
+        userEditProfile,
+        forgotPassword
     }=controllers(dependencies);
     
     const router =Router()
@@ -24,6 +25,7 @@ export const routes = (dependencies : IDependencies)=>{
     router.route("/signup").post(signup);
     router.route("/login").post(login);
     router.route("/logout").delete(logout);
+    router.route("/forgot-password").post(forgotPassword)
     router.route("/getAllUser").get(getAllUserData);
     router.route("/blockUnblockUser").post(blockUnblockUser);
     router.route("/googleSignup").post(googleAuth);
