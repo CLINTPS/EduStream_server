@@ -15,12 +15,17 @@ export const getCourseController =(dependencies:IDependencies)=>{
 
             
             const courseData  = await getCourseUseCase(dependencies).execute(id)
-
             const isEnrolled = await getChechkEnrolledUseCase(dependencies).execute(id, userId)
+            // const isEnrolled=false
+            // if(userId){
+            //      isEnrolled = await getChechkEnrolledUseCase(dependencies).execute(id, userId)
+            // }
+            // if (!isEnrolled && !userId) {
+            //     courseData.lessons = [];
+            //   }
 
-            // console.log("getCourseController courseData ",courseData );
+            console.log("getCourseController courseData ",courseData );
             console.log("getCourseController isEnrolled",isEnrolled);
-            
 
             res.status(200).json({
                 success: true,

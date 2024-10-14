@@ -21,6 +21,8 @@ export const userEditProfile = async (
           "profile.dob": data?.dob,
           "profile.gender": data?.gender,
           "profile.avatar": data?.profileImage,
+          "profile.qualification": data?.qualification,
+          "profile.interestsCategory": data?.interestsCategory,
           "contact.phoneNumber": data?.phoneNumber,
           "address.houseName": data?.houseName,
           "address.street": data?.street,

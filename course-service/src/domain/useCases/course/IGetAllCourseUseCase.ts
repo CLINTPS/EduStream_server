@@ -1,6 +1,7 @@
+import { CourseFilters } from "../../../infrastructure/database/mongoDB/repositories";
 import { CourseEntity } from "../../entities";
 
 
 export interface IGetAllCourseUseCase {
-    execute(): Promise<CourseEntity[] | null>;
+    execute(filters: CourseFilters): Promise<CourseEntity[] | null>;
 }

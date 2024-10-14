@@ -5,7 +5,7 @@ export const editCourse = async (data: CourseEntity): Promise<CourseEntity | nul
     try {
         console.log("Edit course repo", data);
 
-        const { courseId, title, description, thumbnailImage, thumbnailVideo, language, lessons, pricing } = data;
+        const { courseId, title, description, thumbnailImage, thumbnailVideo, category,language, lessons, pricing } = data;
 
         const course = await Course.findById(courseId);
 
@@ -18,6 +18,7 @@ export const editCourse = async (data: CourseEntity): Promise<CourseEntity | nul
         course.thumbnailImage = thumbnailImage || course.thumbnailImage;
         course.thumbnailVideo = thumbnailVideo || course.thumbnailVideo;
         course.language = language || course.language;
+        course.category = category || course.category;
         course.pricing = pricing || course.pricing;
 
         const updatedLessons = lessons.map((newLesson) => {

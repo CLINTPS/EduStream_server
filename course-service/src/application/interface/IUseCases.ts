@@ -8,7 +8,10 @@ import {
     IRejectedCourseUseCase,
     IGetEnrollmentByUserId,
     IGetEnrollment,
-    IGetChechkEnrolled
+    IGetChechkEnrolled,
+    ICreateAssessmentUseCase,
+    IGetAssessment,
+    IUpdateAssessmentUseCase
 } from "../../domain/useCases";
 
 import { IDependencies } from "./IDependencies";
@@ -24,4 +27,7 @@ export interface IUseCases {
     getEnrollmentByUserIdUseCase:(dependencies:IDependencies)=>IGetEnrollmentByUserId
     getEnrollmentUseCase:(dependencies:IDependencies)=>IGetEnrollment
     getChechkEnrolledUseCase:(dependencies:IDependencies)=>IGetChechkEnrolled
+    createAssessmentUseCase:(dependencies:IDependencies)=>ICreateAssessmentUseCase
+    updateAssessmentUseCase:(dependencies:IDependencies)=>IUpdateAssessmentUseCase
+    getAssessmentUseCase:(dependencies:IDependencies)=>IGetAssessment
 }

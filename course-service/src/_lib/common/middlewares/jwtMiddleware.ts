@@ -18,6 +18,8 @@ declare global {
 
 export const jwtMiddleware = async (req:Request,res:Response,next:NextFunction):Promise<any> => {
     try {
+        console.log("Jwt middle ware reached");
+        
         // console.log("Jwt middle ware reached req.cookies : ",req.cookies);
         const { access_token,refresh_token }=req.cookies;
         if(!access_token && !refresh_token ){
@@ -47,4 +49,4 @@ export const jwtMiddleware = async (req:Request,res:Response,next:NextFunction):
         console.log("Error in JWT middleware:",error);
         next(error)
     }
-}
+} 

@@ -24,9 +24,12 @@ export const signupController = (dependencies:IDependencies)=>{
                 console.log("UserExist",userExist);
 
                 if(userExist){
-                    ErrorResponse.conflict("This Email is alredy registered, please choose another email")
-                    console.log("Email is alredy registread");
-                    
+                    // ErrorResponse.conflict("This Email is alredy registered, please choose another email")
+                    // console.log("Email is alredy registread");
+                    return res.json({
+                        success:false,
+                        message:"Email is alredy registread"
+                    })
                 }
                 
             } catch (error:any) {

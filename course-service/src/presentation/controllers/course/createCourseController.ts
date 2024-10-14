@@ -8,7 +8,7 @@ export const createCourseController = (dependencies: IDependencies)=>{
         }=dependencies;
         try {
             const data=req.body;
-            // console.log("Create course controller data :",req.body);
+            console.log("Create course controller data :",req.body);
             const result = await createCourseUseCase(dependencies).execute(data)
             
             if(!result){

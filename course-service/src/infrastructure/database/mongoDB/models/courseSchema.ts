@@ -42,6 +42,10 @@ const courseSchema = new Schema({
         type: String,
         required: true,
     },
+    category:{
+        type: String,
+        required: true,
+    },
     language:{
         type: String,
         required: true,

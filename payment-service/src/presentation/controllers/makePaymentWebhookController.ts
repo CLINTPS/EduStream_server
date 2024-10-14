@@ -87,6 +87,7 @@ export const makePaymentWebhookController = (dependencies: IDependencies) => {
           console.log(produceData,"produce data in the success payment");
 
           try {
+            console.log("produceData...",produceData);
             await coursePaymentSuccessProducer(produceData);
             console.log("Data produced successfully to Kafka.");
           } catch (error) {

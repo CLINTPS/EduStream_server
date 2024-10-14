@@ -25,6 +25,7 @@ interface Profile {
     gender?:Gender;
     bio?:string;
     qualification?:string;
+    interestsCategory?:string;
     experience?:number;
 }
 

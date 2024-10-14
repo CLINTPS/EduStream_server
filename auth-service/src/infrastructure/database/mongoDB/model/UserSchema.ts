@@ -40,6 +40,9 @@ const UserSchema = new Schema<UserEntity>({
         qualification: {
             type:String,
         },
+        interestsCategory: {
+            type:String,
+        },
         bio: {
             type: String,
         },

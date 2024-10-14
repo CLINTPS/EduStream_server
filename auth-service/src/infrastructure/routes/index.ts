@@ -26,13 +26,13 @@ export const routes = (dependencies : IDependencies)=>{
     router.route("/login").post(login);
     router.route("/logout").delete(logout);
     router.route("/forgot-password").post(forgotPassword)
-    router.route("/getAllUser").get(getAllUserData);
-    router.route("/blockUnblockUser").post(blockUnblockUser);
+    router.route("/getAllUser").get(jwtMiddleware,getAllUserData);
+    router.route("/blockUnblockUser").post(jwtMiddleware,blockUnblockUser);
     router.route("/googleSignup").post(googleAuth);
-    router.route("/becomeInstructor").post(becomeInstructor)
-    router.route("/acceptInstructor").post(acceptInstructor) 
-    router.route("/instructors/:id").get(selectedInstructor)
-    router.route("/reject-instructor").post(rejectInstructor)
-    router.route("/userEditProfile").post(userEditProfile)
+    router.route("/becomeInstructor").post(jwtMiddleware,becomeInstructor)
+    router.route("/acceptInstructor").post(jwtMiddleware,acceptInstructor) 
+    router.route("/instructors/:id").get(jwtMiddleware,selectedInstructor)
+    router.route("/reject-instructor").post(jwtMiddleware,rejectInstructor)
+    router.route("/userEditProfile").post(jwtMiddleware,userEditProfile)
     return router
 }

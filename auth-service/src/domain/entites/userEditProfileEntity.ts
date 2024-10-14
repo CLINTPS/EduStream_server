@@ -11,4 +11,6 @@ export interface userEditProfileEntity {
   district?: string;
   country?: string;
   profileImage?: string;
+  interestsCategory?:string;
+  qualification?:string;
 }

@@ -20,6 +20,7 @@ export interface CourseEntity {
     instructorRef:Types.ObjectId;
     thumbnailImage:string;
     thumbnailVideo:string;
+    category:string;
     language:string;
     lessons:Lesson[];
     pricing:Pricing;
@@ -30,4 +31,7 @@ export interface CourseEntity {
     createdAt?: Date;
     updatedAt?: Date;
     courseId?:string;
+    totalCourses?: number,
+    totalPages?: number,
+    currentPage?: number
 }

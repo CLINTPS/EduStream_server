@@ -19,6 +19,7 @@ export interface EditCourseEntity {
     instructorRef:Types.ObjectId;
     thumbnailImage:string;
     thumbnailVideo:string;
+    category:string;
     language:string;
     lessons:Lesson[];
     pricing:Pricing;

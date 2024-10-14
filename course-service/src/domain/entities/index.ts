@@ -1,3 +1,5 @@
 export * from './userEntity'
 export * from './courseEntity'
 export * from './enrollmentEntity'
+export * from './CourseFilters'
+export * from './assessmentEntity'
