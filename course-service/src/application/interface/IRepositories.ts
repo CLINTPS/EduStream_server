@@ -1,4 +1,5 @@
 import { AssessmentEntity, CourseEntity, EnrollmentEntity } from "../../domain/entities";
+import ResultEntity from "../../domain/entities/resultEntity";
 import { CourseFilters } from "../../infrastructure/database/mongoDB/repositories";
 
 export interface IRepositories {
@@ -15,4 +16,8 @@ export interface IRepositories {
     createAssessment:(data:AssessmentEntity)=>Promise<AssessmentEntity | null>
     updateAssessment:(id: string, data: Partial<AssessmentEntity>)=>Promise<AssessmentEntity | null>;
     getAssessment:(id:string)=>Promise<AssessmentEntity | null>
+    submitAssessment:(data:AssessmentEntity)=>Promise<AssessmentEntity | null>
+    getExamById:(id:string)=>Promise<AssessmentEntity | null>
+    getAssessmentResult:(id:string)=>Promise<AssessmentEntity | null>
+    getAssessmentAttendOrNot:(userId:string,examId:string)=>Promise<ResultEntity | null >
 }

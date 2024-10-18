@@ -16,6 +16,9 @@ import {
 import { 
   createAssessmentController,
   getAssessmentController,
+  getAssessmentResultController,
+  getCheckAssessmetAttendOrNotController,
+  submitAssessmentController,
   updateAssessmentController
 } from "../../presentation/controllers/assessment";
 
@@ -33,6 +36,9 @@ export const controllers = (dependencies: IDependencies) => {
     getEnrolledSingleCourse: getEnrolledSingleCourseController(dependencies),
     createAssessment: createAssessmentController(dependencies),
     updateAssessment:updateAssessmentController(dependencies),
-    getAssessment:getAssessmentController(dependencies)
+    getAssessment:getAssessmentController(dependencies),
+    submitAssessment:submitAssessmentController(dependencies),
+    getExamResults:getAssessmentResultController(dependencies),
+    getCheckAssessmetAttendOrNot:getCheckAssessmetAttendOrNotController(dependencies)
   };
 };

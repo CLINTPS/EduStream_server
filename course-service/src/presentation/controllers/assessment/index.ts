@@ -1,3 +1,6 @@
 export * from './createAssessmentController'
 export * from './getAssessmentController'
 export * from './updateAssessmentController'
+export * from './submitAssessmentController'
+export * from './getAssessmentResultController'
+export * from './getCheckAssessmetAttendOrNotController'

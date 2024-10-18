@@ -11,7 +11,10 @@ import {
     IGetChechkEnrolled,
     ICreateAssessmentUseCase,
     IGetAssessment,
-    IUpdateAssessmentUseCase
+    IUpdateAssessmentUseCase,
+    ISubmitAssessmentUseCase,
+    IGetAssessmentResultUseCase,
+    IGetAssessmentAttendOrNotUseCase,
 } from "../../domain/useCases";
 
 import { IDependencies } from "./IDependencies";
@@ -30,4 +33,7 @@ export interface IUseCases {
     createAssessmentUseCase:(dependencies:IDependencies)=>ICreateAssessmentUseCase
     updateAssessmentUseCase:(dependencies:IDependencies)=>IUpdateAssessmentUseCase
     getAssessmentUseCase:(dependencies:IDependencies)=>IGetAssessment
+    submitAssessmentUseCase:(dependencies:IDependencies)=>ISubmitAssessmentUseCase
+    getAssessmentResultUseCase:(dependencies:IDependencies)=>IGetAssessmentResultUseCase
+    getAssessmentAttendOrNotUseCase:(dependencies:IDependencies)=>IGetAssessmentAttendOrNotUseCase
 }

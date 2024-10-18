@@ -1,3 +1,6 @@
 export * from './createAssessmentUseCase'
 export * from './getAssessmentUseCase'
 export * from './updateAssessmentUseCase'
+export * from './submitAssessmentUseCase'
+export * from './getAssessmentResultUseCase'
+export * from './getAssessmentAttendOrNotUseCase'

@@ -19,7 +19,10 @@ export const routes = (dependencies:IDependencies)=>{
         // getAllCourses,
         createAssessment,
         updateAssessment,
-        getAssessment
+        getAssessment,
+        submitAssessment,
+        getExamResults,
+        getCheckAssessmetAttendOrNot
     }=controllers(dependencies);
     const router = Router();
 
@@ -30,6 +33,7 @@ export const routes = (dependencies:IDependencies)=>{
     router.route("/create-assessment").post(jwtMiddleware,createAssessment)
     router.route("/update-assessment/:id").put(jwtMiddleware,updateAssessment)
     router.route("/check-Assessment/:id").get(jwtMiddleware,getAssessment)
+    router.route("/check-assessment-attendance").post(jwtMiddleware,getCheckAssessmetAttendOrNot)
 
 
     //Admin Route
@@ -42,6 +46,8 @@ export const routes = (dependencies:IDependencies)=>{
     router.route("/getCourse/:id").get(jwtMiddleware,getCourse)
     router.route("/enrollment/:id").get(jwtMiddleware,getEnrolledCourse)
     router.route("/enrollment/singleView/:id").get(jwtMiddleware,getEnrolledSingleCourse)
+    router.route("/submit-assessment").post(jwtMiddleware,submitAssessment)
+    router.route("/exam-results").get(jwtMiddleware,getExamResults)
 
     return router;
 }
