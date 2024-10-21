@@ -15,6 +15,7 @@ import {
     ISubmitAssessmentUseCase,
     IGetAssessmentResultUseCase,
     IGetAssessmentAttendOrNotUseCase,
+    IAddReviewAndRatingUseCase,
 } from "../../domain/useCases";
 
 import { IDependencies } from "./IDependencies";
@@ -36,4 +37,5 @@ export interface IUseCases {
     submitAssessmentUseCase:(dependencies:IDependencies)=>ISubmitAssessmentUseCase
     getAssessmentResultUseCase:(dependencies:IDependencies)=>IGetAssessmentResultUseCase
     getAssessmentAttendOrNotUseCase:(dependencies:IDependencies)=>IGetAssessmentAttendOrNotUseCase
+    addReviewAndRatingUseCase:(dependencies:IDependencies)=>IAddReviewAndRatingUseCase
 }

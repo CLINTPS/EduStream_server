@@ -11,6 +11,7 @@ import {
   rejectCourseController,
   getEnrolledCourseController,
   getEnrolledSingleCourseController,
+  addReviewController,
 } from "../../presentation/controllers/course";
 
 import { 
@@ -39,6 +40,7 @@ export const controllers = (dependencies: IDependencies) => {
     getAssessment:getAssessmentController(dependencies),
     submitAssessment:submitAssessmentController(dependencies),
     getExamResults:getAssessmentResultController(dependencies),
-    getCheckAssessmetAttendOrNot:getCheckAssessmetAttendOrNotController(dependencies)
+    getCheckAssessmetAttendOrNot:getCheckAssessmetAttendOrNotController(dependencies),
+    addReview:addReviewController(dependencies)
   };
 };

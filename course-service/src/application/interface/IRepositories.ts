@@ -20,4 +20,5 @@ export interface IRepositories {
     getExamById:(id:string)=>Promise<AssessmentEntity | null>
     getAssessmentResult:(id:string)=>Promise<AssessmentEntity | null>
     getAssessmentAttendOrNot:(userId:string,examId:string)=>Promise<ResultEntity | null >
+    addReviewAndRating:(data:CourseEntity)=>Promise<CourseEntity | null>
 }

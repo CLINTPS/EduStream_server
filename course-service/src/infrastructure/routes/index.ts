@@ -22,7 +22,8 @@ export const routes = (dependencies:IDependencies)=>{
         getAssessment,
         submitAssessment,
         getExamResults,
-        getCheckAssessmetAttendOrNot
+        getCheckAssessmetAttendOrNot,
+        addReview
     }=controllers(dependencies);
     const router = Router();
 
@@ -48,6 +49,7 @@ export const routes = (dependencies:IDependencies)=>{
     router.route("/enrollment/singleView/:id").get(jwtMiddleware,getEnrolledSingleCourse)
     router.route("/submit-assessment").post(jwtMiddleware,submitAssessment)
     router.route("/exam-results").get(jwtMiddleware,getExamResults)
+    router.route("/add-review").post(jwtMiddleware,addReview)
 
     return router;
 }

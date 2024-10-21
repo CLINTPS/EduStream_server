@@ -13,6 +13,14 @@ export interface Pricing {
     amount :number;
 }
 
+export interface Review {
+    userId: Types.ObjectId;
+    userName: string;   
+    rating: number;   
+    review: string;
+    createdAt?: Date;
+}
+
 export interface CourseEntity {
     _id?:Types.ObjectId;
     title:string;
@@ -24,6 +32,7 @@ export interface CourseEntity {
     language:string;
     lessons:Lesson[];
     pricing:Pricing;
+    reviews?: Review[];
     rejectReason?:string;
     isBlocked?:boolean;
     isPublished?:boolean;

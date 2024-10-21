@@ -20,6 +20,32 @@ const lessonSchema = new Schema({
     }
 })
 
+const reviewSchema = new Schema({
+    userId: {
+        type: Types.ObjectId,
+        ref: "users",
+        required: true
+    },
+    userName: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 5
+    },
+    review: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
 const courseSchema = new Schema({
     title:{
         type: String,
@@ -62,6 +88,7 @@ const courseSchema = new Schema({
             default:0,
         }
     },
+    reviews: [reviewSchema],
     isBlocked:{
         type: Boolean,
         default: false,
