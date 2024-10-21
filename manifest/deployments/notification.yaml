@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edustream-notification-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification-service
+  template:
+    metadata:
+      labels:
+        app: notification-service
+    spec:
+      containers:
+      - image: clintps/edustream-notification:latest
+        name: notification-service
+        envFrom:
+          - configMapRef:
+              name: notification-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edustream-notification-service
+spec:
+  selector:
+    app: notification-service
+  ports:
+  - protocol: TCP
+    port: 4002
+    targetPort: 4002

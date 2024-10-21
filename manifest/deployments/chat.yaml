@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edustream-chat-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chat-service
+  template:
+    metadata:
+      labels:
+        app: chat-service
+    spec:
+      containers:
+      - image: clintps/edustream-chat:latest
+        name: chat-service
+        envFrom:
+          - configMapRef:
+              name: chat-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edustream-chat-service
+spec:
+  selector:
+    app: chat-service
+  ports:
+  - protocol: TCP
+    port: 4005
+    targetPort: 4005

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edustream-payment-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-service
+  template:
+    metadata:
+      labels:
+        app: payment-service
+    spec:
+      containers:
+      - image: clintps/edustream-payment:latest
+        name: payment-service
+        envFrom:
+          - configMapRef:
+              name: payment-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edustream-payment-service
+spec:
+  selector:
+    app: payment-service
+  ports:
+  - protocol: TCP
+    port: 4004
+    targetPort: 4004

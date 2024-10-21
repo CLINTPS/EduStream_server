@@ -28,7 +28,7 @@ export const routes = (dependencies:IDependencies)=>{
     const router = Router();
 
     //Instructore Route
-    router.route("/create-course").post(jwtMiddleware,verifyInstructor,createCourse)
+    router.route("/create-course").post(jwtMiddleware,createCourse)
     router.route("/edit-course").post(jwtMiddleware,editCourse)
     router.route("/fetchMyCourses/:id").get(myCourse)
     router.route("/create-assessment").post(jwtMiddleware,createAssessment)
@@ -38,9 +38,9 @@ export const routes = (dependencies:IDependencies)=>{
 
 
     //Admin Route
-    router.route("/getPendingCourses").get(jwtMiddleware,verifyAdmin,getPendingCourse)
-    router.route("/approveCourse").post(jwtMiddleware,verifyAdmin,approvedCourse)
-    router.route("/rejectCourse").post(jwtMiddleware,verifyAdmin,rejectedCourse)
+    router.route("/getPendingCourses").get(jwtMiddleware,getPendingCourse)
+    router.route("/approveCourse").post(jwtMiddleware,approvedCourse)
+    router.route("/rejectCourse").post(jwtMiddleware,rejectedCourse)
 
     //Student Routes
     router.route("/getAllCourses").get(jwtMiddleware,getAllCoursesController)

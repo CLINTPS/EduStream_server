@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-config
+  labels:
+    app: edustream-auth-service
+data:
+  MONGO_URL: "mongodb+srv://clintps1010:KlciMnq03nToZ7tD@cluster0.nj7at.mongodb.net/EduStream_Auth?retryWrites=true&w=majority&appName=Cluster0"
+  PORT: "4001"
+  ACCESS_TOKEN_SECRET: "educationStream!#6675634756ghfghhrthbe4ygb54by46yb54yb"
+  REFRESH_TOKEN_SECRET: "educationStream!#548456793789ghfghb4y35bye46ywv54y6yb45y"
+  FORGOTPASSWORD_ACCESS_TOKEN_SECRET: "mkjbhvhvcgccffcfcxdxdxfcfgfgf"
+  GOOGLE_CLIENT_ID: "176344730742-d2215e6pfoilhu3phfrhfehfpci4sq3j.apps.googleusercontent.com"
+  NODE_ENV: "production"

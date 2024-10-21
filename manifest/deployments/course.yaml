@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edustream-course-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: course-service
+  template:
+    metadata:
+      labels:
+        app: course-service
+    spec:
+      containers:
+      - image: clintps/edustream-course:latest
+        name: course-service
+        envFrom:
+          - configMapRef:
+              name: course-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edustream-course-service
+spec:
+  selector:
+    app: course-service
+  ports:
+  - protocol: TCP
+    port: 4003
+    targetPort: 4003

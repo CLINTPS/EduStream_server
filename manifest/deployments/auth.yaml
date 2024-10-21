@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edustream-auth-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+      - image: clintps/edustream-auth:latest
+        name: auth-service
+        envFrom:
+          - configMapRef:
+              name: auth-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edustream-auth-service
+spec:
+  selector:
+    app: auth-service
+  ports:
+  - protocol: TCP
+    port: 4001
+    targetPort: 4001

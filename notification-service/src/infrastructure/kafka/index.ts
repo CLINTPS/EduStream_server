@@ -7,6 +7,11 @@ const kafka= new Kafka({
     brokers:["localhost:29092"]
 });
 
+// const kafka= new Kafka({
+//     clientId:'auth-service',
+//     brokers:["kafka:9092"]
+// });
+
 export const producer:Producer=kafka.producer();
 export const consumer:Consumer=kafka.consumer({
     groupId:"notification-service-kafka-group"
