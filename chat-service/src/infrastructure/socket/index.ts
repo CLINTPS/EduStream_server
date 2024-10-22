@@ -7,7 +7,7 @@ const connectSocketIo = (server:Server)=> {
 
     const io = new SocketServer(server,{
         cors:{
-            origin:["http://localhost:5173"],
+            origin:["https://edu-stream-client.vercel.app"],
             methods:["GET","POST"]
         }
     })

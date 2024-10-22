@@ -12,5 +12,5 @@ data:
   STRIPE_ENDPOINT_SECRET: "whsec_22097adac29c7fb02eb108beb432ab639c3d08643d447b93ea9bc0aef0117473"
   STRIPE_SECRET: "sk_test_51Q0dRxRxGaFOTDjMeplcXAHSubs6MCLO8MqKVrtFa9HE5aZXoxFMMcjYaZAzEG6w9BXcCsV0RZbQKUjjP6XxeFZR00VUOV7gjT"
 
-  FRONTEND_URL: "http://localhost:5173"
+  FRONTEND_URL: "https://edu-stream-client.vercel.app"
   NODE_ENV: "production"
