@@ -7,11 +7,11 @@ export const createCheckoutSessionController = (
 ) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const stripeInstance = new Stripe(process.env.STRIPE_SECRET as string,{
-        apiVersion:"2024-06-20"
+      const stripeInstance = new Stripe(process.env.STRIPE_SECRET as string, {
+        apiVersion: "2024-06-20",
       });
 
-    //   console.log("createCheckoutSessionController body data...", req.body);
+      //   console.log("createCheckoutSessionController body data...", req.body);
 
       const {
         courseName,
@@ -56,7 +56,6 @@ export const createCheckoutSessionController = (
         sessionId: session.id,
         message: "payment response",
       });
-
     } catch (error) {
       console.log("createCheckoutSessionController error.....", error);
       next(error);
