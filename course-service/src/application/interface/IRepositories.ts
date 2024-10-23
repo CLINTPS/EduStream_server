@@ -21,7 +21,15 @@ export interface IRepositories {
     createAssessment:(data:AssessmentEntity)=>Promise<AssessmentEntity | null>
     updateAssessment:(id: string, data: Partial<AssessmentEntity>)=>Promise<AssessmentEntity | null>;
     getAssessment:(id:string)=>Promise<AssessmentEntity | null>
-    submitAssessment:(data:AssessmentEntity)=>Promise<AssessmentEntity | null>
+    // submitAssessment:(data:AssessmentEntity)=>Promise<AssessmentEntity | null>
+    submitAssessment: (
+        data: AssessmentEntity & {
+            examId: string;
+            userId: string;
+            courseId: string;
+            answers: { questionId: string; selectedAnswer: string }[];
+        }
+    ) => Promise<{ correctAnswers: number; totalScore: number; resultStatus: string }>;
     getExamById:(id:string)=>Promise<AssessmentEntity | null>
     getAssessmentResult:(id:string)=>Promise<AssessmentEntity | null>
     getAssessmentAttendOrNot:(userId:string,examId:string)=>Promise<ResultEntity | null >

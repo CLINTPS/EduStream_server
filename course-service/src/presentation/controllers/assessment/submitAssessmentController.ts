@@ -22,7 +22,7 @@ export const submitAssessmentController = (dependencies:IDependencies) => {
             
         } catch (error:any) {
             console.error("Submit assessment controller error :",error);
-            
+            next(error)
         }
     }
 }

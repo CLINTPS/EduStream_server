@@ -7,13 +7,15 @@ export const submitAssessmentUseCase = (dependencies: IDependencies) => {
   } = dependencies;
 
   return {
-    execute: async (data: AssessmentEntity) => {
-      console.log("UseCase submit assessment data..", data);
-      try {
-        return await submitAssessment(data);
-      } catch (error: any) {
-        throw new Error(error.message || "Submit assessment failed.");
+    execute: async (
+      data: AssessmentEntity & {
+          examId: string;
+          userId: string;
+          courseId: string;
+          answers: { questionId: string; selectedAnswer: string }[];
       }
-    },
+  ) => {
+      return await submitAssessment(data);
+  },
   };
 };
