@@ -20,7 +20,7 @@ export const controllers=(dependencies:IDependencies)=>{
         getUser:getUserController(dependencies),
         logout:logoutController(dependencies),
         getAllUserData:getAllUserController(dependencies),
-        blockUnblockUser:blockUnblockUserController(dependencies),
+        blockUnblockUser:blockUnblockUserController(),
         googleAuth:googleAuthController(dependencies),
         selectedInstructor:selectedInstructorController(dependencies),
         becomeInstructor:becomeInstructorController(dependencies),

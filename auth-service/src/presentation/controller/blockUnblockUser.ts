@@ -4,11 +4,8 @@ import { User } from "../../infrastructure/database/mongoDB/model";
 import blockUnblock from "../../infrastructure/kafka/producer/blockUnblock";
 
 
-export const blockUnblockUserController = (dependencies:IDependencies) => {
+export const blockUnblockUserController = () => {
 
-    const {
-        useCases: {userBlockUnblockUserUseCase}
-    } = dependencies;
 
     return async (req:Request,res:Response,next:NextFunction)=>{
         try {

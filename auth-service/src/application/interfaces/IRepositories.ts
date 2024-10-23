@@ -5,7 +5,7 @@ export interface IRepositories {
     findByEmail:(email:string)=>Promise<UserEntity | null>
     verifyOtp: (email:string,otp:string)=>Promise<Boolean|null>
     findById: (id:string)=>Promise<UserEntity | null>
-    blockUnblock:(id:string)=>Promise<UserEntity | null>
+    blockUnblock:(userId:string)=>Promise<UserEntity | null>
     becomeInstracture:(instructorData:InstructorEntity)=>Promise<UserEntity|null>
     acceptInstructor:(email:string)=>Promise<UserEntity | null>
     rejectInstructor:(rejectResonData:InstructorRejectEntity)=>Promise<UserEntity | null>

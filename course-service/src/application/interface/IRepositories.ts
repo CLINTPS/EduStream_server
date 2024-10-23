@@ -8,7 +8,12 @@ export interface IRepositories {
     approvedCourse:(id:string)=>Promise<CourseEntity | null>
     rejectedCourse:(id:string,reason:string)=>Promise<CourseEntity | null>
     editCourse:(data:CourseEntity)=>Promise<CourseEntity | null>
-    getAllCourse:(filters: CourseFilters)=>Promise<CourseEntity[] | null>
+     getAllCourse(filters: CourseFilters): Promise<{
+        courses: CourseEntity[];
+        totalCourses: number;
+        totalPages: number;
+        currentPage: number;
+    } | null>;
     getCourse:(id:string)=>Promise<CourseEntity | null>
     getEnrollmentByUserId:(id:string)=>Promise<EnrollmentEntity[] | null>
     getEnrollment:(id:string)=>Promise<EnrollmentEntity | null>

@@ -1,9 +1,9 @@
 import { User } from "../model/UserSchema";
 import { UserEntity } from "../../../../domain/entites";
 
-export const blockUnblock = async(data:UserEntity):Promise<UserEntity | null> =>{
+export const blockUnblock = async(userId:string):Promise<UserEntity | null> =>{
     try {
-        console.log("Reached-----------");
+        console.log("Reached-----------",userId);
         
         return null
     } catch (error:any) {
