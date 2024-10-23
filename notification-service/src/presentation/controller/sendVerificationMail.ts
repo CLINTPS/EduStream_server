@@ -7,12 +7,12 @@ export const sendVerificationMailController=(dependencies:IDependencies)=>{
         // console.log("Controller sendverification reached");
         
         try {
-            console.log("Controller sendverification reached",req.user);
+            console.log("Controller sendverification reached",req.body);
 
-            if(!req.user){
+            if(!req.body){
                 throw new Error("Email is required!");
             }
-            await sendVerificationMail(req.user.email);
+            await sendVerificationMail(req.body.email);
             res.status(200).json({
                 success:true,
                 data:{},

@@ -5,8 +5,10 @@ export default async(data:UserEntity,topic?:string)=>{
     try {
         const targetTopic = topic || 'default-topic'
         await producer.connect();
+        console.log("user created producer data",data);
         const messages =[
             {
+                
                 topic:targetTopic,
                 messages:[{
                     key : "userCreated",
