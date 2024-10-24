@@ -13,7 +13,7 @@ spec:
         app: notification-service
     spec:
       containers:
-      - image: clintps/edustream-notification:latest
+      - image: clintps/edustream-notification-service:latest
         name: notification-service
         envFrom:
           - configMapRef:

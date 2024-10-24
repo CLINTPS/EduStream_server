@@ -13,7 +13,7 @@ spec:
         app: course-service
     spec:
       containers:
-      - image: clintps/edustream-course:latest
+      - image: clintps/edustream-course-service:latest
         name: course-service
         envFrom:
           - configMapRef:

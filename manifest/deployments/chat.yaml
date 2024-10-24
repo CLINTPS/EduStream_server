@@ -13,7 +13,7 @@ spec:
         app: chat-service
     spec:
       containers:
-      - image: clintps/edustream-chat:latest
+      - image: clintps/edustream-chat-service:latest
         name: chat-service
         envFrom:
           - configMapRef:

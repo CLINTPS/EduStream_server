@@ -13,7 +13,7 @@ spec:
         app: auth-service
     spec:
       containers:
-      - image: clintps/edustream-auth:latest
+      - image: clintps/edustream-auth-service:latest
         name: auth-service
         envFrom:
           - configMapRef:

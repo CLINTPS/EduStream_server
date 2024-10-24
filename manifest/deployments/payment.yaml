@@ -13,7 +13,7 @@ spec:
         app: payment-service
     spec:
       containers:
-      - image: clintps/edustream-payment:latest
+      - image: clintps/edustream-payment-service:latest
         name: payment-service
         envFrom:
           - configMapRef:
