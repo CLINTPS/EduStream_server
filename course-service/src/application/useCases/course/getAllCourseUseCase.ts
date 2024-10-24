@@ -7,6 +7,8 @@ export const getAllCourseUseCase = (dependencies: IDependencies) => {
     } = dependencies;
   return {
     execute: async (filters: CourseFilters) => {
+      // console.log("Get all course application use case data",filters);
+      
       return await getAllCourse(filters);
     }
   };

@@ -1,9 +1,7 @@
 import { Router } from "express";
 import { IDependencies } from "../../application/interface/IDependencies";
-import { getAllCoursesController } from "../../presentation/controllers/course";
 import { controllers } from "../../presentation/controllers";
 import { jwtMiddleware } from "../../_lib/common";
-import { verifyAdmin, verifyInstructor } from "../../_lib/common/middlewares";
 
 export const routes = (dependencies:IDependencies)=>{
     const {
@@ -16,7 +14,7 @@ export const routes = (dependencies:IDependencies)=>{
         getCourse,
         getEnrolledCourse,
         getEnrolledSingleCourse,
-        // getAllCourses,
+        getAllCourse,
         createAssessment,
         updateAssessment,
         getAssessment,
@@ -43,7 +41,7 @@ export const routes = (dependencies:IDependencies)=>{
     router.route("/rejectCourse").post(jwtMiddleware,rejectedCourse)
 
     //Student Routes
-    router.route("/getAllCourses").get(jwtMiddleware,getAllCoursesController)
+    router.route("/getAllCourses").get(jwtMiddleware,getAllCourse)
     router.route("/getCourse/:id").get(jwtMiddleware,getCourse)
     router.route("/enrollment/:id").get(jwtMiddleware,getEnrolledCourse)
     router.route("/enrollment/singleView/:id").get(jwtMiddleware,getEnrolledSingleCourse)

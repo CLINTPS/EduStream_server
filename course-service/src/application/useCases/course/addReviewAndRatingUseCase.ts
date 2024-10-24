@@ -6,12 +6,18 @@ export const addReviewAndRatingUseCase = (dependencies:IDependencies)=>{
         repositories: { addReviewAndRating }
     }=dependencies;
     return {
-        execute:async(data:CourseEntity)=>{
-            console.log("addReviewAndRating UseCase data :",data);
+        execute: async (data: {
+            courseId: string;
+            rating: number;
+            review: string;
+            userId: string;
+            userName: string;
+        }) => {
+            console.log("addReviewAndRating UseCase data :", data);
             try {
-                return await addReviewAndRating(data)
-            } catch (error:any) {
-                throw new Error(error.message || "addReviewAndRatingUseCase faild....")
+                return await addReviewAndRating(data);
+            } catch (error: any) {
+                throw new Error(error.message || "addReviewAndRatingUseCase failed....");
             }
         }
     }

@@ -1,5 +1,11 @@
 import { CourseEntity } from "../../entities";
 
 export interface IAddReviewAndRatingUseCase {
-    execute(data:CourseEntity):Promise<CourseEntity | null>
+    execute(data: {
+        courseId: string;
+        rating: number;
+        review: string;
+        userId: string;
+        userName: string;
+      }):Promise<CourseEntity | null>
 }

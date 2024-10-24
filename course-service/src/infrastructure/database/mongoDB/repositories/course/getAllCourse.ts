@@ -70,12 +70,18 @@ export const getAllCourse = async (filters: CourseFilters): Promise<{
 
         const totalPages = Math.ceil(totalCourses / itemsPerPage);
 
+        // console.log("Courses:", courses);
+        // console.log("Total Courses:", totalCourses);
+        // console.log("Total Pages:", totalPages);
+        // console.log("Current Page:", currentPage);
+
         return {
             courses,
             totalCourses,
             totalPages,
             currentPage
         };
+
     } catch (error: any) {
         console.error("Repository Error:", error);
         throw new Error(error.message || "Error fetching courses");

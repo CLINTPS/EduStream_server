@@ -4,7 +4,6 @@ import {
   approvedCourseController,
   createCourseController,
   editCourseController,
-  getAllCoursesController,
   getCourseController,
   getPendingCourseController,
   instructorCourseController,
@@ -12,6 +11,7 @@ import {
   getEnrolledCourseController,
   getEnrolledSingleCourseController,
   addReviewController,
+  getAllCoursesController,
 } from "../../presentation/controllers/course";
 
 import { 
@@ -31,7 +31,7 @@ export const controllers = (dependencies: IDependencies) => {
     approvedCourse: approvedCourseController(dependencies),
     rejectedCourse: rejectCourseController(dependencies),
     editCourse: editCourseController(dependencies),
-    // getAllCourses:getAllCoursesController(),
+    getAllCourse:getAllCoursesController(dependencies),
     getCourse: getCourseController(dependencies),
     getEnrolledCourse: getEnrolledCourseController(dependencies),
     getEnrolledSingleCourse: getEnrolledSingleCourseController(dependencies),
