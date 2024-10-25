@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: webapprouting.kubernetes.azure.com
   rules:
-    - host: 
+    - host: mobicart.shop
       http:
         paths:
           - path: /api/auth
