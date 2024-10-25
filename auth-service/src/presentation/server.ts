@@ -12,7 +12,7 @@ const PORT:number=Number(process.env.PORT) || 4001
 app.use(express.json())
 app.use(cookieParser())
 
-app.use('/',routes(dependencies));
+app.use('/api/auth',routes(dependencies));
 
 app.use("*",(req:Request,res:Response)=>{
     res.status(404).json({success:false,status:404,message:"Api not found"})
