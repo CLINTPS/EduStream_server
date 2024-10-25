@@ -5,7 +5,7 @@ metadata:
   labels:
     app: edustream-payment-service
 data:
-  MONGO_URL: mongodb+srv://clintps1010:KlciMnq03nToZ7tD@cluster0.nj7at.mongodb.net/EduSEduStream_Paymenttream_Course?retryWrites=true&w=majority&appName=Cluster0
+  DB_MONGO_URL: mongodb+srv://clintps1010:KlciMnq03nToZ7tD@cluster0.nj7at.mongodb.net/EduSEduStream_Paymenttream_Course?retryWrites=true&w=majority&appName=Cluster0
   PORT: "4004"
   ACCESS_TOKEN_SECRET: "educationStream!#6675634756ghfghhrthbe4ygb54by46yb54yb"
   REFRESH_TOKEN_SECRET: "educationStream!#548456793789ghfghb4y35bye46ywv54y6yb45y"
